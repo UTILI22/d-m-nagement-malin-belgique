@@ -1,4 +1,5 @@
 import { Phone } from "lucide-react";
+import logo from "@/assets/logo-utilitop.png";
 
 const Header = () => {
   return (
@@ -6,9 +7,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between py-3.5 gap-3.5">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="w-[38px] h-[38px] rounded-xl grid place-items-center font-black text-primary-foreground" style={{ background: "radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.22), transparent 60%), linear-gradient(180deg, rgba(255,212,84,.95), rgba(243,198,34,.85))", boxShadow: "0 10px 22px rgba(243,198,34,.14)" }}>
-            U
-          </div>
+          <img src={logo} alt="UTILITOP" className="w-[42px] h-[42px] rounded-xl object-cover" />
           <div>
             <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
             <div className="text-xs text-muted-foreground">Déménagement & Transport</div>

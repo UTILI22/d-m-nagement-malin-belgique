@@ -1,3 +1,5 @@
+import logo from "@/assets/logo-utilitop.png";
+
 const Footer = () => {
   return (
     <footer className="pt-8 pb-11 border-t border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(5,20,17,.2), rgba(5,20,17,.6))" }}>
@@ -6,9 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 rounded-xl grid place-items-center font-black text-primary-foreground text-sm" style={{ background: "linear-gradient(180deg, rgba(255,212,84,.95), rgba(243,198,34,.85))" }}>
-                U
-              </div>
+              <img src={logo} alt="UTILITOP" className="w-9 h-9 rounded-xl object-cover" />
               <div>
                 <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
                 <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
