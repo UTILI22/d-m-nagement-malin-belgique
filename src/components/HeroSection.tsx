@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
-import { MapPin, ArrowRight, CalendarIcon, Camera } from "lucide-react";
+import { MapPin, ArrowRight, CalendarIcon, Camera, Phone, Mail, X, CheckCircle } from "lucide-react";
 import heroImage from "@/assets/hero-moving.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -11,13 +12,22 @@ const HeroSection = () => {
   const [propertyTo, setPropertyTo] = useState("");
   const [date, setDate] = useState("");
   const [photos, setPhotos] = useState<File[]>([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = () => {
+  const handleOpenConfirm = () => {
+    if (!departure.trim() || !arrival.trim()) return;
+    setShowConfirm(true);
+  };
+
+  const handleConfirmSubmit = () => {
     const msg = encodeURIComponent(
-      `Bonjour, je souhaite un devis.\nDépart: ${departure} (${propertyFrom})\nDestination: ${arrival} (${propertyTo})\nDate: ${date || "Pas encore fixée"}\nPhotos: ${photos.length} fichier(s)`
+      `Bonjour, je souhaite un devis.\nDépart: ${departure} (${propertyFrom})\nDestination: ${arrival} (${propertyTo})\nDate: ${date || "Pas encore fixée"}\nPhotos: ${photos.length} fichier(s)\nEmail: ${email || "Non renseigné"}\nTéléphone: ${phone || "Non renseigné"}`
     );
     window.open(`https://wa.me/32491507960?text=${msg}`, "_blank");
+    setShowConfirm(false);
   };
 
   const propertyOptions = [
@@ -113,11 +123,69 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <button onClick={handleSubmit} className="btn-primary text-sm mt-4">
+          <button onClick={handleOpenConfirm} className="btn-primary text-sm mt-4">
             {t("hero.submit")} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      <Dialog open={showConfirm} onOpenChange={setShowConfirm}>
+        <DialogContent className="glass-card border-white/10 bg-background/95 backdrop-blur-xl max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-foreground flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-primary" />
+              {t("confirm.title")}
+            </DialogTitle>
+          </DialogHeader>
+
+          {/* Recap */}
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-muted-foreground">{t("hero.departure")}</span>
+              <span className="text-foreground font-medium">{departure} {propertyFrom && `(${propertyOptions.find(o => o.value === propertyFrom)?.label})`}</span>
+            </div>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-muted-foreground">{t("hero.destination")}</span>
+              <span className="text-foreground font-medium">{arrival} {propertyTo && `(${propertyOptions.find(o => o.value === propertyTo)?.label})`}</span>
+            </div>
+            {date && (
+              <div className="flex justify-between py-2 border-b border-white/10">
+                <span className="text-muted-foreground">{t("hero.date")}</span>
+                <span className="text-foreground font-medium">{date}</span>
+              </div>
+            )}
+            {photos.length > 0 && (
+              <div className="flex justify-between py-2 border-b border-white/10">
+                <span className="text-muted-foreground">{t("hero.photo")}</span>
+                <span className="text-foreground font-medium">{photos.length} photo(s)</span>
+              </div>
+            )}
+          </div>
+
+          {/* Contact fields */}
+          <div className="space-y-3 mt-2">
+            <div>
+              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.email")}</label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input className="glass-input pl-10" type="email" placeholder={t("confirm.email_placeholder")} value={email} onChange={e => setEmail(e.target.value)} />
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.phone")}</label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input className="glass-input pl-10" type="tel" placeholder={t("confirm.phone_placeholder")} value={phone} onChange={e => setPhone(e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          <button onClick={handleConfirmSubmit} className="btn-primary text-sm mt-2 w-full justify-center">
+            {t("confirm.send")} <ArrowRight className="w-4 h-4" />
+          </button>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

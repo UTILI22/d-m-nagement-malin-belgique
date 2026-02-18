@@ -32,6 +32,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "hero.photo": "Joindre des photos (facultatif)",
     "hero.photo_label": "Ajouter des photos",
     "hero.submit": "Obtenir mon devis",
+    "confirm.title": "Confirmer votre demande",
+    "confirm.email": "Votre email",
+    "confirm.email_placeholder": "exemple@email.com",
+    "confirm.phone": "Votre téléphone",
+    "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.send": "Envoyer via WhatsApp",
 
     // Packs
     "packs.title": "Nos packs déménagement",
@@ -122,6 +128,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "hero.photo": "Foto's toevoegen (optioneel)",
     "hero.photo_label": "Foto's toevoegen",
     "hero.submit": "Mijn offerte ontvangen",
+    "confirm.title": "Bevestig uw aanvraag",
+    "confirm.email": "Uw e-mail",
+    "confirm.email_placeholder": "voorbeeld@email.com",
+    "confirm.phone": "Uw telefoon",
+    "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.send": "Verzenden via WhatsApp",
 
     "packs.title": "Onze verhuispakketten",
     "packs.subtitle": "Kies de formule die bij u past. Elk pakket is aanpasbaar aan uw behoeften.",
@@ -207,6 +219,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "hero.photo": "Attach photos (optional)",
     "hero.photo_label": "Add photos",
     "hero.submit": "Get my quote",
+    "confirm.title": "Confirm your request",
+    "confirm.email": "Your email",
+    "confirm.email_placeholder": "example@email.com",
+    "confirm.phone": "Your phone",
+    "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.send": "Send via WhatsApp",
 
     "packs.title": "Our moving packs",
     "packs.subtitle": "Choose the formula that suits you. Each pack is adaptable to your needs.",
