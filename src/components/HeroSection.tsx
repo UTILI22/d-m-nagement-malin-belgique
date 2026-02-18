@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
-import { MapPin, ArrowRight, CalendarIcon, Camera, Phone, Mail, X, CheckCircle } from "lucide-react";
+import { MapPin, ArrowRight, CalendarIcon, Camera, Phone, Mail, CheckCircle, MessageCircle, Loader2 } from "lucide-react";
 import heroImage from "@/assets/hero-moving.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { supabase } from "@/integrations/supabase/client";
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -15,6 +16,8 @@ const HeroSection = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleOpenConfirm = () => {
@@ -22,12 +25,50 @@ const HeroSection = () => {
     setShowConfirm(true);
   };
 
-  const handleConfirmSubmit = () => {
+  const handleConfirmSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("submit-quote", {
+        body: {
+          departure,
+          arrival,
+          property_from: propertyFrom,
+          property_to: propertyTo,
+          move_date: date || null,
+          photos_count: photos.length,
+          email: email || null,
+          phone: phone || null,
+        },
+      });
+
+      if (error) throw error;
+      
+      setShowConfirm(false);
+      setShowSuccess(true);
+    } catch (err) {
+      console.error("Submit error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleWhatsApp = () => {
     const msg = encodeURIComponent(
-      `Bonjour, je souhaite un devis.\nDépart: ${departure} (${propertyFrom})\nDestination: ${arrival} (${propertyTo})\nDate: ${date || "Pas encore fixée"}\nPhotos: ${photos.length} fichier(s)\nEmail: ${email || "Non renseigné"}\nTéléphone: ${phone || "Non renseigné"}`
+      `Bonjour, je souhaite un devis.\nDépart: ${departure} (${propertyFrom})\nDestination: ${arrival} (${propertyTo})\nDate: ${date || "Pas encore fixée"}\nEmail: ${email || "Non renseigné"}\nTéléphone: ${phone || "Non renseigné"}`
     );
     window.open(`https://wa.me/32491507960?text=${msg}`, "_blank");
-    setShowConfirm(false);
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+    setDeparture("");
+    setArrival("");
+    setPropertyFrom("");
+    setPropertyTo("");
+    setDate("");
+    setPhotos([]);
+    setEmail("");
+    setPhone("");
   };
 
   const propertyOptions = [
@@ -181,9 +222,43 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <button onClick={handleConfirmSubmit} className="btn-primary text-sm mt-2 w-full justify-center">
-            {t("confirm.send")} <ArrowRight className="w-4 h-4" />
+          <button onClick={handleConfirmSubmit} disabled={isSubmitting} className="btn-primary text-sm mt-2 w-full justify-center">
+            {isSubmitting ? (
+              <><Loader2 className="w-4 h-4 animate-spin" /> {t("confirm.sending")}</>
+            ) : (
+              <>{t("confirm.submit")} <ArrowRight className="w-4 h-4" /></>
+            )}
           </button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Success Modal */}
+      <Dialog open={showSuccess} onOpenChange={handleCloseSuccess}>
+        <DialogContent className="glass-card border-white/10 bg-background/95 backdrop-blur-xl max-w-md text-center">
+          <div className="flex flex-col items-center gap-4 py-4">
+            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+              <CheckCircle className="w-8 h-8 text-primary" />
+            </div>
+            <h2 className="text-xl font-bold text-foreground">{t("success.title")}</h2>
+            <p className="text-muted-foreground text-sm">{t("success.message")}</p>
+            
+            {email && (
+              <p className="text-xs text-muted-foreground">
+                {t("success.email_sent")} <span className="text-foreground font-medium">{email}</span>
+              </p>
+            )}
+
+            <div className="w-full border-t border-white/10 pt-4 mt-2">
+              <p className="text-xs text-muted-foreground mb-3">{t("success.whatsapp_cta")}</p>
+              <button onClick={handleWhatsApp} className="btn-glass text-sm w-full justify-center" style={{ color: "#25D366", borderColor: "rgba(37,211,102,0.3)" }}>
+                <MessageCircle className="w-4 h-4" /> {t("success.whatsapp_btn")}
+              </button>
+            </div>
+
+            <button onClick={handleCloseSuccess} className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2">
+              {t("success.close")}
+            </button>
+          </div>
         </DialogContent>
       </Dialog>
     </section>
