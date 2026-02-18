@@ -1,42 +1,45 @@
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
-
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-secondary text-secondary-foreground py-14">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-10">
+    <footer className="pt-8 pb-11 border-t border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(5,20,17,.2), rgba(5,20,17,.6))" }}>
+      <div className="container mx-auto">
+        <div className="grid md:grid-cols-[1.2fr_.8fr_.8fr] gap-8 items-start">
+          {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-                <Truck className="w-5 h-5 text-primary-foreground" />
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-9 h-9 rounded-xl grid place-items-center font-black text-primary-foreground text-sm" style={{ background: "linear-gradient(180deg, rgba(255,212,84,.95), rgba(243,198,34,.85))" }}>
+                U
               </div>
-              <span className="text-lg font-bold">DéménagePro</span>
+              <div>
+                <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
+                <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
+              </div>
             </div>
-            <p className="text-sm text-secondary-foreground/70">
-              Votre partenaire de confiance pour tous vos déménagements en Belgique depuis 2010.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Location utilitaire avec/sans chauffeur, déménagement et transport en Belgique.
             </p>
+            <p className="text-xs text-foreground/40 mt-2.5">© {new Date().getFullYear()} UTILITOP — Tous droits réservés</p>
           </div>
+
+          {/* Contact */}
           <div>
-            <h4 className="font-bold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-secondary-foreground/70">
-              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +32 470 00 00 00</li>
-              <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> info@demenagepro.be</li>
-              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Bruxelles, Belgique</li>
-            </ul>
+            <h4 className="font-bold text-foreground mb-3 text-sm">Contact</h4>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>📞 <a href="tel:+32491507960" className="hover:text-foreground transition-colors">+32 491 50 79 60</a></p>
+              <p>💬 <a href="https://wa.me/32491507960" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">WhatsApp</a></p>
+              <p>🌐 utilitop.be</p>
+            </div>
           </div>
+
+          {/* Links */}
           <div>
-            <h4 className="font-bold mb-4">Zones desservies</h4>
-            <ul className="text-sm text-secondary-foreground/70 space-y-1">
-              <li>Bruxelles</li>
-              <li>Anvers</li>
-              <li>Liège</li>
-              <li>Gand</li>
-              <li>Namur & Charleroi</li>
-            </ul>
+            <h4 className="font-bold text-foreground mb-3 text-sm">Liens</h4>
+            <div className="space-y-2 text-sm">
+              <p><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Services</a></p>
+              <p><a href="#comment-ca-marche" className="text-muted-foreground hover:text-foreground transition-colors">Comment ça marche</a></p>
+              <p><a href="#avis" className="text-muted-foreground hover:text-foreground transition-colors">Avis</a></p>
+              <p><a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></p>
+            </div>
           </div>
-        </div>
-        <div className="border-t border-secondary-foreground/10 mt-10 pt-6 text-center text-xs text-secondary-foreground/50">
-          © 2025 DéménagePro. Tous droits réservés.
         </div>
       </div>
     </footer>

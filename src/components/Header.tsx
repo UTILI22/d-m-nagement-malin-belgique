@@ -1,24 +1,36 @@
-import { Truck, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-            <Truck className="w-5 h-5 text-primary-foreground" />
+    <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(7,27,22,.85), rgba(7,27,22,.65))" }}>
+      <div className="container mx-auto flex items-center justify-between py-3.5 gap-3.5">
+        {/* Brand */}
+        <div className="flex items-center gap-2.5">
+          <div className="w-[38px] h-[38px] rounded-xl grid place-items-center font-black text-primary-foreground" style={{ background: "radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.22), transparent 60%), linear-gradient(180deg, rgba(255,212,84,.95), rgba(243,198,34,.85))", boxShadow: "0 10px 22px rgba(243,198,34,.14)" }}>
+            U
           </div>
-          <span className="text-xl font-bold text-foreground">DéménagePro</span>
+          <div>
+            <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
+            <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
+          </div>
         </div>
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Services</a>
-          <a href="#comment-ca-marche" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Comment ça marche</a>
-          <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+
+        {/* Nav desktop */}
+        <nav className="hidden md:flex items-center gap-1">
+          <a href="#services" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">Services</a>
+          <a href="#comment-ca-marche" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">Comment ça marche</a>
+          <a href="#avis" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">Avis</a>
+          <a href="#faq" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">FAQ</a>
         </nav>
-        <a href="tel:+32470000000" className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
-          <Phone className="w-4 h-4" />
-          <span className="hidden sm:inline">+32 470 00 00 00</span>
-        </a>
+
+        {/* Right */}
+        <div className="flex items-center gap-2.5">
+          <a href="tel:+32491507960" className="md:hidden glass-card-flat px-3 py-2.5 rounded-[14px] text-muted-foreground font-bold text-sm flex items-center gap-2">
+            <Phone className="w-4 h-4" /> +32 491 50 79 60
+          </a>
+          <a href="#devis" className="btn-glass text-sm hidden sm:inline-flex">Devis rapide</a>
+          <a href="#devis" className="btn-primary text-sm">Obtenir un devis</a>
+        </div>
       </div>
     </header>
   );
