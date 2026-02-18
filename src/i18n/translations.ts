@@ -37,7 +37,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "confirm.email_placeholder": "exemple@email.com",
     "confirm.phone": "Votre téléphone",
     "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.submit": "Envoyer ma demande",
     "confirm.send": "Envoyer via WhatsApp",
+    "confirm.sending": "Envoi en cours…",
+
+    // Success
+    "success.title": "Demande envoyée !",
+    "success.message": "Votre demande de devis a bien été enregistrée. Nous reviendrons vers vous dans les plus brefs délais.",
+    "success.email_sent": "Un email de confirmation a été envoyé à",
+    "success.whatsapp_cta": "Vous pouvez aussi nous contacter directement par WhatsApp",
+    "success.whatsapp_btn": "Contacter via WhatsApp",
+    "success.close": "Fermer",
 
     // Packs
     "packs.title": "Nos packs déménagement",
@@ -133,7 +143,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "confirm.email_placeholder": "voorbeeld@email.com",
     "confirm.phone": "Uw telefoon",
     "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.submit": "Mijn aanvraag versturen",
     "confirm.send": "Verzenden via WhatsApp",
+    "confirm.sending": "Verzenden…",
+
+    "success.title": "Aanvraag verzonden!",
+    "success.message": "Uw offerteaanvraag is geregistreerd. We nemen zo snel mogelijk contact met u op.",
+    "success.email_sent": "Een bevestigingsmail is verzonden naar",
+    "success.whatsapp_cta": "U kunt ons ook rechtstreeks contacteren via WhatsApp",
+    "success.whatsapp_btn": "Contact via WhatsApp",
+    "success.close": "Sluiten",
 
     "packs.title": "Onze verhuispakketten",
     "packs.subtitle": "Kies de formule die bij u past. Elk pakket is aanpasbaar aan uw behoeften.",
@@ -224,7 +243,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "confirm.email_placeholder": "example@email.com",
     "confirm.phone": "Your phone",
     "confirm.phone_placeholder": "+32 xxx xx xx xx",
+    "confirm.submit": "Send my request",
     "confirm.send": "Send via WhatsApp",
+    "confirm.sending": "Sending…",
+
+    "success.title": "Request sent!",
+    "success.message": "Your quote request has been registered. We will get back to you as soon as possible.",
+    "success.email_sent": "A confirmation email has been sent to",
+    "success.whatsapp_cta": "You can also contact us directly via WhatsApp",
+    "success.whatsapp_btn": "Contact via WhatsApp",
+    "success.close": "Close",
 
     "packs.title": "Our moving packs",
     "packs.subtitle": "Choose the formula that suits you. Each pack is adaptable to your needs.",
