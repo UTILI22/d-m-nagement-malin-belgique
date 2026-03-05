@@ -3,6 +3,7 @@ export type Lang = "fr" | "nl" | "en";
 export const translations: Record<Lang, Record<string, string>> = {
   fr: {
     // Header
+    "nav.home": "Accueil",
     "nav.packs": "Nos packs",
     "nav.how": "Comment ça marche",
     "nav.about": "À propos",
@@ -183,6 +184,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
 
   nl: {
+    "nav.home": "Startpagina",
     "nav.packs": "Onze pakketten",
     "nav.how": "Hoe werkt het",
     "nav.about": "Over ons",
@@ -356,6 +358,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
 
   en: {
+    "nav.home": "Home",
     "nav.packs": "Our packs",
     "nav.how": "How it works",
     "nav.about": "About us",
