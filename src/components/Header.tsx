@@ -17,7 +17,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(7,27,22,.85), rgba(7,27,22,.65))" }}>
       <div className="container mx-auto flex items-center justify-between py-3.5 gap-3.5">
         <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
-          <img src={logo} alt="UTILITOP" className="w-[54px] h-[54px] rounded-xl object-contain brightness-110 drop-shadow-lg" style={{ filter: "brightness(1.1) contrast(1.05)" }} />
+          <img src={logo} alt="UTILITOP" className="w-[64px] h-[64px] rounded-xl object-contain" style={{ mixBlendMode: "screen" }} />
           <div>
             <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
             <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
