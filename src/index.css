@@ -81,6 +81,7 @@
 .glass-input {
   width: 100%;
   padding: 12px;
+  padding-left: 12px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.05);
@@ -88,6 +89,9 @@
   outline: none;
   font-family: inherit;
   font-size: 14px;
+}
+.glass-input.pl-10 {
+  padding-left: 2.75rem;
 }
 .glass-input::placeholder {
   color: rgba(234,244,241,.55);
