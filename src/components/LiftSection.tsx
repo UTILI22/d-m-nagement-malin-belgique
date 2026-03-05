@@ -1,10 +1,13 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import liftServiceImg from "@/assets/lift-service.jpg";
+import liftCamionImg from "@/assets/lift-camion.jpg";
+import liftMaindoeuvreImg from "@/assets/lift-maindoeuvre.jpg";
 
 const liftCards = [
-  { key: "lift1", accent: true },
-  { key: "lift2", accent: false },
-  { key: "lift3", accent: false },
+  { key: "lift1", image: liftServiceImg },
+  { key: "lift2", image: liftCamionImg },
+  { key: "lift3", image: liftMaindoeuvreImg },
 ];
 
 const LiftSection = () => {
@@ -38,6 +41,11 @@ const LiftSection = () => {
                 background: "linear-gradient(180deg, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.03))",
               }}
             >
+              <div className="relative h-40 overflow-hidden">
+                <img src={card.image} alt={t(`${card.key}.name`)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              </div>
+
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-extrabold text-foreground mb-5">
                   {t(`${card.key}.name`)}
