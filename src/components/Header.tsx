@@ -31,14 +31,14 @@ const Header = () => {
           <a href="/#faq" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.faq")}</a>
         </nav>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           {/* Language switcher */}
-          <div className="flex items-center rounded-xl border border-foreground/10 overflow-hidden">
+          <div className="flex items-center rounded-xl border border-foreground/10 overflow-hidden shrink-0">
             {langs.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
-                className={`px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                className={`px-2 py-1.5 text-xs font-bold transition-colors ${
                   lang === l.code
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -49,8 +49,8 @@ const Header = () => {
             ))}
           </div>
 
-          <a href="tel:+32491507960" className="md:hidden glass-card-flat px-3 py-2.5 rounded-[14px] text-muted-foreground font-bold text-sm flex items-center gap-2">
-            <Phone className="w-4 h-4" /> +32 491 50 79 60
+          <a href="tel:+32491507960" className="md:hidden shrink-0 glass-card-flat px-2.5 py-2 rounded-[14px] text-muted-foreground font-bold text-xs flex items-center gap-1.5">
+            <Phone className="w-3.5 h-3.5" /> Appeler
           </a>
           <Link to="/#devis" className="btn-primary text-sm hidden sm:inline-flex">{t("nav.quote")}</Link>
         </div>
