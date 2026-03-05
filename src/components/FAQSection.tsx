@@ -39,10 +39,9 @@ const FAQSection = () => {
           })}
         </div>
 
-        <div className="flex gap-2.5 flex-wrap items-center mt-6">
+        <div className="flex gap-2.5 flex-wrap items-center justify-center mt-6">
           <a href="#devis" className="btn-primary text-sm">{t("faq.cta")}</a>
-          <span className="text-muted-foreground text-sm">{t("faq.or")}</span>
-          <a href="https://wa.me/32491507960" target="_blank" rel="noopener noreferrer" className="btn-glass text-sm">{t("faq.whatsapp")}</a>
+          <a href="tel:+32491507960" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm px-5 py-2.5 rounded-xl transition-colors shadow-lg">📞 +32 491 50 79 60</a>
         </div>
       </div>
     </section>
