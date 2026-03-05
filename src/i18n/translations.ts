@@ -50,6 +50,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "success.whatsapp_btn": "Contacter via WhatsApp",
     "success.close": "Fermer",
 
+    // Selector
+    "selector.step1": "Étape 1",
+    "selector.step2": "Étape 2 — Optionnel",
+    "selector.packs_title": "Choisissez votre pack",
+    "selector.packs_subtitle": "Sélectionnez le pack qui correspond le mieux à votre besoin.",
+    "selector.options_title": "Ajoutez des options",
+    "selector.options_subtitle": "Complétez votre formule avec un monte-meuble ou de la main d'œuvre supplémentaire.",
+    "selector.add_option": "Ajouter",
+    "selector.items_selected": "service(s) sélectionné(s)",
+    "selector.request_quote": "Demander un devis",
+    "selector.form_title": "Finaliser votre demande",
+    "selector.your_selection": "Votre sélection",
+
     // Packs
     "packs.title": "Nos packs déménagement",
     "packs.subtitle": "Choisissez la formule qui vous convient. Chaque pack est adaptable à vos besoins.",
@@ -211,6 +224,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "success.whatsapp_btn": "Contact via WhatsApp",
     "success.close": "Sluiten",
 
+    // Selector
+    "selector.step1": "Stap 1",
+    "selector.step2": "Stap 2 — Optioneel",
+    "selector.packs_title": "Kies uw pakket",
+    "selector.packs_subtitle": "Selecteer het pakket dat het beste bij uw behoefte past.",
+    "selector.options_title": "Voeg opties toe",
+    "selector.options_subtitle": "Vul uw formule aan met een meubellift of extra mankracht.",
+    "selector.add_option": "Toevoegen",
+    "selector.items_selected": "service(s) geselecteerd",
+    "selector.request_quote": "Offerte aanvragen",
+    "selector.form_title": "Uw aanvraag afronden",
+    "selector.your_selection": "Uw selectie",
+
     "packs.title": "Onze verhuispakketten",
     "packs.subtitle": "Kies de formule die bij u past. Elk pakket is aanpasbaar aan uw behoeften.",
     "packs.cta": "Dit pakket aanvragen",
@@ -366,6 +392,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "success.whatsapp_cta": "You can also contact us directly via WhatsApp",
     "success.whatsapp_btn": "Contact via WhatsApp",
     "success.close": "Close",
+
+    // Selector
+    "selector.step1": "Step 1",
+    "selector.step2": "Step 2 — Optional",
+    "selector.packs_title": "Choose your pack",
+    "selector.packs_subtitle": "Select the pack that best fits your needs.",
+    "selector.options_title": "Add options",
+    "selector.options_subtitle": "Complete your formula with a furniture lift or extra manpower.",
+    "selector.add_option": "Add",
+    "selector.items_selected": "service(s) selected",
+    "selector.request_quote": "Request a quote",
+    "selector.form_title": "Finalize your request",
+    "selector.your_selection": "Your selection",
 
     "packs.title": "Our moving packs",
     "packs.subtitle": "Choose the formula that suits you. Each pack is adaptable to your needs.",
