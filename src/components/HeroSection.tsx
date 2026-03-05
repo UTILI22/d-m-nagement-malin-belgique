@@ -22,7 +22,7 @@ const HeroSection = () => {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleOpenConfirm = () => {
-    if (!departure.trim() || !arrival.trim()) return;
+    if (!departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()) return;
     setShowConfirm(true);
   };
 
@@ -163,7 +163,25 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <button onClick={handleOpenConfirm} className="btn-primary text-sm mt-4">
+          {/* Row 4: Email + Phone */}
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
+            <div>
+              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.email")} *</label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input className="glass-input pl-10" type="email" placeholder={t("confirm.email_placeholder")} value={email} onChange={e => setEmail(e.target.value)} required />
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.phone")} *</label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input className="glass-input pl-10" type="tel" placeholder={t("confirm.phone_placeholder")} value={phone} onChange={e => setPhone(e.target.value)} required />
+              </div>
+            </div>
+          </div>
+
+          <button onClick={handleOpenConfirm} disabled={!departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()} className="btn-primary text-sm mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
             {t("hero.submit")} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -201,24 +219,6 @@ const HeroSection = () => {
                 <span className="text-foreground font-medium">{photos.length} photo(s)</span>
               </div>
             )}
-          </div>
-
-          {/* Contact fields */}
-          <div className="space-y-3 mt-2">
-            <div>
-              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.email")}</label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input className="glass-input pl-10" type="email" placeholder={t("confirm.email_placeholder")} value={email} onChange={e => setEmail(e.target.value)} />
-              </div>
-            </div>
-            <div>
-              <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.phone")}</label>
-              <div className="relative">
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input className="glass-input pl-10" type="tel" placeholder={t("confirm.phone_placeholder")} value={phone} onChange={e => setPhone(e.target.value)} />
-              </div>
-            </div>
           </div>
 
           <button onClick={handleConfirmSubmit} disabled={isSubmitting} className="btn-primary text-sm mt-2 w-full justify-center">

@@ -199,22 +199,22 @@ const PacksSection = () => {
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.email")}</label>
+                <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.email")} *</label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input className="glass-input pl-10" type="email" placeholder={t("confirm.email_placeholder")} value={email} onChange={e => setEmail(e.target.value)} />
+                  <input className="glass-input pl-10" type="email" placeholder={t("confirm.email_placeholder")} value={email} onChange={e => setEmail(e.target.value)} required />
                 </div>
               </div>
               <div>
-                <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.phone")}</label>
+                <label className="block text-xs text-muted-foreground mb-1.5">{t("confirm.phone")} *</label>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input className="glass-input pl-10" type="tel" placeholder={t("confirm.phone_placeholder")} value={phone} onChange={e => setPhone(e.target.value)} />
+                  <input className="glass-input pl-10" type="tel" placeholder={t("confirm.phone_placeholder")} value={phone} onChange={e => setPhone(e.target.value)} required />
                 </div>
               </div>
             </div>
 
-            <button onClick={handleSubmit} disabled={isSubmitting || !departure.trim() || !arrival.trim()} className="btn-primary text-sm mt-2 w-full justify-center">
+            <button onClick={handleSubmit} disabled={isSubmitting || !departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()} className="btn-primary text-sm mt-2 w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
               {isSubmitting ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> {t("confirm.sending")}</>
               ) : (

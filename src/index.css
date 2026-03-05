@@ -97,6 +97,13 @@
   box-shadow: 0 0 0 4px rgba(243,198,34,.12);
 }
 
+/* Fix select dropdown readability */
+.glass-input option {
+  background: hsl(160 40% 12%);
+  color: hsl(160 30% 94%);
+  padding: 8px;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
