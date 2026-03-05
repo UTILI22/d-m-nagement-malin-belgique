@@ -5,6 +5,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Header
     "nav.packs": "Nos packs",
     "nav.how": "Comment ça marche",
+    "nav.about": "À propos",
     "nav.reviews": "Avis",
     "nav.faq": "FAQ",
     "nav.quote_fast": "Devis rapide",
@@ -102,6 +103,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "faq.or": "ou",
     "faq.whatsapp": "💬 WhatsApp",
 
+    // About
+    "about.title": "À propos de nous",
+    "about.intro": "UTILITOP, c'est une équipe passionnée au service de vos déménagements et transports en Belgique. Fondée à Bruxelles, notre mission est simple : rendre chaque déménagement fluide, professionnel et sans stress.",
+    "about.story": "Nous avons commencé avec un seul utilitaire et une ambition claire : offrir un service de qualité à prix juste. Aujourd'hui, nous accompagnons des centaines de particuliers et professionnels chaque année, avec la même exigence de ponctualité, de soin et de transparence.",
+    "about.value1.title": "Fiabilité",
+    "about.value1.desc": "Ponctualité garantie, devis clairs et sans surprise. Votre confiance est notre priorité.",
+    "about.value2.title": "Rapidité",
+    "about.value2.desc": "Réponse en moins de 2h, intervention rapide et efficace le jour J.",
+    "about.value3.title": "Équipement pro",
+    "about.value3.desc": "Véhicules adaptés, couvertures, sangles, diable — tout le matériel pour un transport sécurisé.",
+    "about.value4.title": "Équipe humaine",
+    "about.value4.desc": "Des déménageurs expérimentés, respectueux et à l'écoute de vos besoins.",
+    "about.cta": "Demander un devis",
+
     // Footer
     "footer.desc": "Location utilitaire avec/sans chauffeur, déménagement et transport en Belgique.",
     "footer.rights": "Tous droits réservés",
@@ -112,6 +127,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   nl: {
     "nav.packs": "Onze pakketten",
     "nav.how": "Hoe werkt het",
+    "nav.about": "Over ons",
     "nav.reviews": "Reviews",
     "nav.faq": "FAQ",
     "nav.quote_fast": "Snelle offerte",
@@ -203,6 +219,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "faq.or": "of",
     "faq.whatsapp": "💬 WhatsApp",
 
+    // About
+    "about.title": "Over ons",
+    "about.intro": "UTILITOP is een gepassioneerd team dat zich inzet voor uw verhuizingen en transport in België. Opgericht in Brussel, is onze missie eenvoudig: elke verhuis vlot, professioneel en stressvrij maken.",
+    "about.story": "We zijn begonnen met één bestelwagen en een duidelijke ambitie: kwaliteitsservice tegen een eerlijke prijs. Vandaag begeleiden we honderden particulieren en bedrijven per jaar, met dezelfde eisen van stiptheid, zorg en transparantie.",
+    "about.value1.title": "Betrouwbaarheid",
+    "about.value1.desc": "Gegarandeerde stiptheid, duidelijke offertes zonder verrassingen. Uw vertrouwen is onze prioriteit.",
+    "about.value2.title": "Snelheid",
+    "about.value2.desc": "Antwoord binnen 2 uur, snelle en efficiënte interventie op de dag zelf.",
+    "about.value3.title": "Professionele uitrusting",
+    "about.value3.desc": "Aangepaste voertuigen, dekens, spanbanden, steekwagen — alle materiaal voor veilig transport.",
+    "about.value4.title": "Menselijk team",
+    "about.value4.desc": "Ervaren verhuizers, respectvol en luisterend naar uw behoeften.",
+    "about.cta": "Offerte aanvragen",
+
     "footer.desc": "Utilitaire verhuur met/zonder chauffeur, verhuis en transport in België.",
     "footer.rights": "Alle rechten voorbehouden",
     "footer.contact": "Contact",
@@ -212,6 +242,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   en: {
     "nav.packs": "Our packs",
     "nav.how": "How it works",
+    "nav.about": "About us",
     "nav.reviews": "Reviews",
     "nav.faq": "FAQ",
     "nav.quote_fast": "Quick quote",
@@ -302,6 +333,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "faq.cta": "Free quote",
     "faq.or": "or",
     "faq.whatsapp": "💬 WhatsApp",
+
+    // About
+    "about.title": "About us",
+    "about.intro": "UTILITOP is a passionate team dedicated to your moves and transport across Belgium. Founded in Brussels, our mission is simple: make every move smooth, professional and stress-free.",
+    "about.story": "We started with a single van and a clear ambition: quality service at a fair price. Today, we support hundreds of individuals and businesses each year, with the same commitment to punctuality, care and transparency.",
+    "about.value1.title": "Reliability",
+    "about.value1.desc": "Guaranteed punctuality, clear quotes with no surprises. Your trust is our priority.",
+    "about.value2.title": "Speed",
+    "about.value2.desc": "Response within 2 hours, fast and efficient service on moving day.",
+    "about.value3.title": "Professional equipment",
+    "about.value3.desc": "Adapted vehicles, blankets, straps, hand truck — all the equipment for safe transport.",
+    "about.value4.title": "Human team",
+    "about.value4.desc": "Experienced movers, respectful and attentive to your needs.",
+    "about.cta": "Request a quote",
 
     "footer.desc": "Utility vehicle rental with/without driver, moving and transport in Belgium.",
     "footer.rights": "All rights reserved",
