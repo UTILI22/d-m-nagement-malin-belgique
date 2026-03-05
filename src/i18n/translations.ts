@@ -123,13 +123,13 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // How it works
     "how.title": "Comment ça marche ?",
-    "how.subtitle": "3 étapes, pas de surprise.",
+    "how.subtitle": "Déménagement ou lift, 3 étapes et c'est réglé.",
     "step1.title": "Demande de devis",
-    "step1.desc": "Départ, destination, volume estimé, date et options.",
+    "step1.desc": "Déménagement ou monte-meuble ? Indiquez départ, destination, volume et options souhaitées.",
     "step2.title": "Confirmation",
-    "step2.desc": "On valide ensemble le créneau, le véhicule et le tarif.",
+    "step2.desc": "On valide ensemble le créneau, le véhicule (ou le lift) et le tarif.",
     "step3.title": "Le jour J",
-    "step3.desc": "On arrive à l'heure, on charge, on livre. Simple.",
+    "step3.desc": "On arrive à l'heure, on charge, on monte, on livre. Simple.",
     "how.cta": "Obtenir un devis",
 
     // Testimonials
@@ -299,13 +299,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lift3.cta": "Dit pack aanvragen",
 
     "how.title": "Hoe werkt het?",
-    "how.subtitle": "3 stappen, geen verrassingen.",
+    "how.subtitle": "Verhuizing of lift, 3 stappen en het is geregeld.",
     "step1.title": "Offerte aanvragen",
-    "step1.desc": "Vertrek, bestemming, geschat volume, datum en opties.",
+    "step1.desc": "Verhuizing of meubellift? Geef vertrek, bestemming, volume en gewenste opties aan.",
     "step2.title": "Bevestiging",
-    "step2.desc": "We bevestigen samen het tijdslot, het voertuig en het tarief.",
+    "step2.desc": "We bevestigen samen het tijdslot, het voertuig (of de lift) en het tarief.",
     "step3.title": "De dag zelf",
-    "step3.desc": "We komen op tijd, we laden, we leveren. Simpel.",
+    "step3.desc": "We komen op tijd, we laden, we tillen, we leveren. Simpel.",
     "how.cta": "Offerte aanvragen",
 
     "reviews.title": "Zij vertrouwden ons",
@@ -472,13 +472,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lift3.cta": "Request this pack",
 
     "how.title": "How it works?",
-    "how.subtitle": "3 steps, no surprises.",
+    "how.subtitle": "Moving or lift service, 3 steps and you're set.",
     "step1.title": "Request a quote",
-    "step1.desc": "Departure, destination, estimated volume, date and options.",
+    "step1.desc": "Moving or furniture lift? Provide departure, destination, volume and desired options.",
     "step2.title": "Confirmation",
-    "step2.desc": "We confirm together the time slot, vehicle and rate.",
+    "step2.desc": "We confirm together the time slot, vehicle (or lift) and rate.",
     "step3.title": "Moving day",
-    "step3.desc": "We arrive on time, we load, we deliver. Simple.",
+    "step3.desc": "We arrive on time, we load, we lift, we deliver. Simple.",
     "how.cta": "Get a quote",
 
     "reviews.title": "They trusted us",
