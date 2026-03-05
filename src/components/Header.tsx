@@ -49,7 +49,7 @@ const Header = () => {
             ))}
           </div>
 
-          <a href="tel:+32491507960" className="md:hidden glass-card-flat px-3 py-2.5 rounded-[14px] text-muted-foreground font-bold text-sm flex items-center gap-2">
+          <a href="tel:+32491507960" className="glass-card-flat px-3 py-2.5 rounded-[14px] text-muted-foreground font-bold text-sm flex items-center gap-2 hover:text-foreground transition-colors">
             <Phone className="w-4 h-4" /> +32 491 50 79 60
           </a>
           <Link to="/#devis" className="btn-primary text-sm hidden sm:inline-flex">{t("nav.quote")}</Link>
