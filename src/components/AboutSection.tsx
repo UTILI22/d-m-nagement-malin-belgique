@@ -45,7 +45,7 @@ const AboutSection = () => {
             <a href="#devis" className="btn-primary text-sm">{t("about.cta")}</a>
             <a href="tel:+32491507960" className="btn-glass text-sm">📞 +32 491 50 79 60</a>
           </div>
-          <img src={mascot} alt="Mascotte UTILITOP" className="w-28 h-28 object-contain ml-auto opacity-80 hidden sm:block" />
+          <img src={mascot} alt="Mascotte UTILITOP" className="w-44 h-44 object-contain ml-auto hidden sm:block transition-transform duration-300 hover:rotate-6 hover:scale-110 cursor-pointer" />
         </div>
       </div>
     </section>
