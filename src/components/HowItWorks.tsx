@@ -1,6 +1,13 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import stepDevis from "@/assets/step-devis.png";
+import stepConfirmation from "@/assets/step-confirmation.png";
+import stepJourJ from "@/assets/step-jourj.png";
 
-const steps = ["1", "2", "3"];
+const steps = [
+  { num: "1", img: stepDevis },
+  { num: "2", img: stepConfirmation },
+  { num: "3", img: stepJourJ },
+];
 
 const HowItWorks = () => {
   const { t } = useLanguage();
@@ -12,13 +19,14 @@ const HowItWorks = () => {
         <p className="text-muted-foreground text-[clamp(15px,1.4vw,18px)] leading-relaxed mb-8">{t("how.subtitle")}</p>
 
         <div className="grid md:grid-cols-3 gap-4">
-          {steps.map((num) => (
-            <div key={num} className="glass-card-flat p-5 rounded-lg">
+          {steps.map((step) => (
+            <div key={step.num} className="glass-card-flat p-5 rounded-lg flex flex-col items-center text-center">
+              <img src={step.img} alt={t(`step${step.num}.title`)} className="w-24 h-24 object-contain mb-4" />
               <div className="w-[34px] h-[34px] rounded-xl grid place-items-center font-black text-foreground mb-2.5" style={{ background: "rgba(32,201,151,.12)", border: "1px solid rgba(32,201,151,.20)" }}>
-                {num}
+                {step.num}
               </div>
-              <h3 className="text-base font-bold text-foreground mb-1.5">{t(`step${num}.title`)}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t(`step${num}.desc`)}</p>
+              <h3 className="text-base font-bold text-foreground mb-1.5">{t(`step${step.num}.title`)}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t(`step${step.num}.desc`)}</p>
             </div>
           ))}
         </div>
