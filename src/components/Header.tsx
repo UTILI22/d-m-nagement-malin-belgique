@@ -1,6 +1,6 @@
 import { Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-utilitop.png";
+import mascot from "@/assets/mascot-utilitop.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/translations";
 
@@ -17,7 +17,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(7,27,22,.85), rgba(7,27,22,.65))" }}>
       <div className="container mx-auto flex items-center justify-between py-3.5 gap-3.5">
         <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
-          <img src={logo} alt="UTILITOP" className="w-[64px] h-[64px] rounded-xl object-contain" style={{ mixBlendMode: "screen" }} />
+          <img src={mascot} alt="UTILITOP" className="w-[52px] h-[52px] rounded-xl object-contain" />
           <div>
             <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
             <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
