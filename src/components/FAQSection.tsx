@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Phone } from "lucide-react";
 import mascot from "@/assets/mascot-utilitop.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -41,7 +42,7 @@ const FAQSection = () => {
 
         <div className="flex gap-2.5 flex-wrap items-center justify-center mt-6">
           <a href="#devis" className="btn-primary text-sm">{t("faq.cta")}</a>
-          <a href="tel:+32491507960" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm px-5 py-2.5 rounded-xl transition-colors shadow-lg">📞 +32 491 50 79 60</a>
+          <a href="tel:+32491507960" className="inline-flex items-center gap-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-3 rounded-xl transition-colors shadow-lg"><Phone className="w-5 h-5" /> +32 491 50 79 60</a>
         </div>
       </div>
     </section>
