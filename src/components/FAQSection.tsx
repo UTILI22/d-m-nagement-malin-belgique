@@ -21,7 +21,7 @@ const FAQSection = () => {
               Les réponses aux questions qu'on reçoit le plus souvent.
             </p>
           </div>
-          <img src={mascot} alt="Mascotte UTILITOP" className="w-20 h-20 object-contain opacity-70 hidden sm:block" />
+          <img src={mascot} alt="Mascotte UTILITOP" className="w-36 h-36 object-contain hidden sm:block transition-transform duration-300 hover:-rotate-6 hover:scale-110 cursor-pointer" />
         </div>
 
         <div className="grid gap-3 max-w-3xl">
