@@ -3,7 +3,7 @@ import mascot from "@/assets/mascot-utilitop.png";
 
 const faqs = [
   { q: "Est-ce que vous faites aussi de petits transports ?", a: "Oui. Un meuble, électroménager, cartons… On adapte le véhicule et la formule." },
-  { q: "Je peux louer sans chauffeur ?", a: "Oui, si vous préférez conduire. Sinon, on propose aussi la formule avec chauffeur." },
+  { q: "Vous proposez une aide au chargement ?", a: "Oui, selon le pack choisi. Nos déménageurs peuvent s'occuper du chargement, déchargement et même du montage/démontage de vos meubles." },
   { q: "Comment est calculé le prix ?", a: "Selon la distance, la durée estimée, le volume, le nombre d'allers-retours et les options (aide, matériel…)." },
   { q: "Vous intervenez où ?", a: "Partout en Belgique selon disponibilité. Dites-nous votre ville, on vous répond rapidement." },
 ];
