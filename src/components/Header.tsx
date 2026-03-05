@@ -25,7 +25,7 @@ const Header = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          <Link to="/packs" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.packs")}</Link>
+          <Link to="/packs" className="bg-primary/15 text-primary font-bold text-sm px-3.5 py-2 rounded-xl border border-primary/30 hover:bg-primary/25 transition-colors animate-pulse">{t("nav.packs")}</Link>
           <a href="/#comment-ca-marche" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.how")}</a>
           <Link to="/a-propos" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.about")}</Link>
           <a href="/#faq" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.faq")}</a>
