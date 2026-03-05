@@ -5,9 +5,9 @@ import liftCamionImg from "@/assets/lift-camion.jpg";
 import liftMaindoeuvreImg from "@/assets/lift-maindoeuvre.jpg";
 
 const liftCards = [
-  { key: "lift1", image: liftServiceImg },
-  { key: "lift2", image: liftCamionImg },
-  { key: "lift3", image: liftMaindoeuvreImg },
+  { key: "lift1", image: liftServiceImg, popular: false },
+  { key: "lift2", image: liftCamionImg, popular: true },
+  { key: "lift3", image: liftMaindoeuvreImg, popular: false },
 ];
 
 const LiftSection = () => {
@@ -36,11 +36,21 @@ const LiftSection = () => {
           {liftCards.map((card) => (
             <div
               key={card.key}
-              className="group rounded-2xl overflow-hidden relative flex flex-col border border-foreground/[0.08] transition-transform duration-300 hover:-translate-y-1"
+              className={`group rounded-2xl overflow-hidden relative flex flex-col transition-transform duration-300 hover:-translate-y-1 ${
+                card.popular
+                  ? "ring-2 ring-primary shadow-[0_0_30px_rgba(243,198,34,.15)]"
+                  : "border border-foreground/[0.08]"
+              }`}
               style={{
                 background: "linear-gradient(180deg, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.03))",
               }}
             >
+              {card.popular && (
+                <span className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-bold text-primary-foreground" style={{ background: "linear-gradient(180deg, hsl(46 95% 66%), hsl(46 89% 54%))" }}>
+                  ⭐ Populaire
+                </span>
+              )}
+
               <div className="relative h-56 overflow-hidden">
                 <img src={card.image} alt={t(`${card.key}.name`)} className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
@@ -93,7 +103,7 @@ const LiftSection = () => {
                 {/* CTA */}
                 <button
                   onClick={card.key === "lift3" ? handleContact : handleQuote}
-                  className="btn-primary text-sm w-full mt-4"
+                  className={`${card.popular ? "btn-primary" : "btn-glass"} text-sm w-full mt-4`}
                 >
                   {t(`${card.key}.cta`)} <ArrowRight className="w-3.5 h-3.5" />
                 </button>
