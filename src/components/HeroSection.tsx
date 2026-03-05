@@ -102,6 +102,14 @@ const HeroSection = () => {
           {t("hero.subtitle")}
         </p>
 
+        <a
+          href="tel:+32489545250"
+          className="mt-5 inline-flex items-center gap-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-3 rounded-xl transition-colors shadow-lg"
+        >
+          <Phone className="w-5 h-5" />
+          0489 54 52 50
+        </a>
+
         {/* Form card */}
         <div className="mt-8 max-w-2xl glass-card p-6">
           <h2 className="text-lg font-bold text-foreground mb-4">{t("hero.form_title")}</h2>
