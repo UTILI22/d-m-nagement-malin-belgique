@@ -81,17 +81,16 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-[85vh] flex items-center" id="devis">
+    <section className="relative min-h-screen flex items-center justify-center" id="devis">
       {/* Background image */}
       <div className="absolute inset-0">
         <img src={heroImage} alt="Équipe de déménagement" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-background/80" />
       </div>
 
       {/* Content */}
-      <div className="container mx-auto relative z-10 py-20">
-        <h1 className="text-[clamp(32px,5vw,56px)] leading-[1.05] tracking-tight font-extrabold text-foreground max-w-2xl">
+      <div className="container mx-auto relative z-10 py-20 flex flex-col items-center text-center">
+        <h1 className="text-[clamp(32px,5vw,56px)] leading-[1.05] tracking-tight font-extrabold text-foreground max-w-3xl">
           {t("hero.title_1")}{" "}
           <br className="hidden sm:block" />
           {t("hero.title_2")}{" "}
@@ -102,18 +101,16 @@ const HeroSection = () => {
           {t("hero.subtitle")}
         </p>
 
-        <div className="mt-5 flex justify-center max-w-xl">
-          <a
-            href="tel:+32491507960"
-            className="inline-flex items-center gap-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-3 rounded-xl transition-colors shadow-lg"
-          >
-            <Phone className="w-5 h-5" />
-            +32 491 50 79 60
-          </a>
-        </div>
+        <a
+          href="tel:+32491507960"
+          className="mt-5 inline-flex items-center gap-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-3 rounded-xl transition-colors shadow-lg"
+        >
+          <Phone className="w-5 h-5" />
+          +32 491 50 79 60
+        </a>
 
         {/* Form card */}
-        <div className="mt-8 max-w-2xl glass-card p-6">
+        <div className="mt-8 w-full max-w-2xl glass-card p-6">
           <h2 className="text-lg font-bold text-foreground mb-4">{t("hero.form_title")}</h2>
 
           {/* Row 1: Departure + Destination */}
