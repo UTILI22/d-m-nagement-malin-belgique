@@ -1,4 +1,5 @@
 import { useState } from "react";
+import mascot from "@/assets/mascot-utilitop.png";
 
 const faqs = [
   { q: "Est-ce que vous faites aussi de petits transports ?", a: "Oui. Un meuble, électroménager, cartons… On adapte le véhicule et la formule." },
@@ -13,10 +14,15 @@ const FAQSection = () => {
   return (
     <section id="faq" className="py-14">
       <div className="container mx-auto">
-        <h2 className="text-[clamp(22px,3vw,30px)] font-extrabold tracking-tight text-foreground mb-2.5">FAQ</h2>
-        <p className="text-muted-foreground text-[clamp(15px,1.4vw,18px)] leading-relaxed mb-8">
-          Les réponses aux questions qu'on reçoit le plus souvent.
-        </p>
+        <div className="flex items-center gap-4 mb-8">
+          <div>
+            <h2 className="text-[clamp(22px,3vw,30px)] font-extrabold tracking-tight text-foreground mb-2.5">FAQ</h2>
+            <p className="text-muted-foreground text-[clamp(15px,1.4vw,18px)] leading-relaxed">
+              Les réponses aux questions qu'on reçoit le plus souvent.
+            </p>
+          </div>
+          <img src={mascot} alt="Mascotte UTILITOP" className="w-20 h-20 object-contain opacity-70 hidden sm:block" />
+        </div>
 
         <div className="grid gap-3 max-w-3xl">
           {faqs.map((f, i) => (

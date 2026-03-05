@@ -1,5 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Shield, Clock, Truck, Users } from "lucide-react";
+import mascot from "@/assets/mascot-utilitop.png";
 
 const AboutSection = () => {
   const { t } = useLanguage();
@@ -39,9 +40,12 @@ const AboutSection = () => {
           ))}
         </div>
 
-        <div className="flex gap-2.5 flex-wrap mt-6">
-          <a href="#devis" className="btn-primary text-sm">{t("about.cta")}</a>
-          <a href="tel:+32491507960" className="btn-glass text-sm">📞 +32 491 50 79 60</a>
+        <div className="flex gap-2.5 flex-wrap items-end mt-6">
+          <div className="flex gap-2.5 flex-wrap items-center">
+            <a href="#devis" className="btn-primary text-sm">{t("about.cta")}</a>
+            <a href="tel:+32491507960" className="btn-glass text-sm">📞 +32 491 50 79 60</a>
+          </div>
+          <img src={mascot} alt="Mascotte UTILITOP" className="w-28 h-28 object-contain ml-auto opacity-80 hidden sm:block" />
         </div>
       </div>
     </section>

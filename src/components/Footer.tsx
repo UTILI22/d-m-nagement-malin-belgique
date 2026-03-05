@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-[1.2fr_.8fr_.8fr] gap-8 items-start">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <img src={logo} alt="UTILITOP" className="w-9 h-9 rounded-xl object-cover" />
+              <img src={logo} alt="UTILITOP" className="w-9 h-9 rounded-xl object-contain mix-blend-lighten" />
               <div>
                 <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
                 <div className="text-xs text-muted-foreground">Déménagement & Transport</div>

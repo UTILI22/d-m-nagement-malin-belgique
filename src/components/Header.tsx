@@ -16,13 +16,13 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-foreground/[0.08]" style={{ background: "linear-gradient(180deg, rgba(7,27,22,.85), rgba(7,27,22,.65))" }}>
       <div className="container mx-auto flex items-center justify-between py-3.5 gap-3.5">
-        <div className="flex items-center gap-2.5">
-          <img src={logo} alt="UTILITOP" className="w-[42px] h-[42px] rounded-xl object-cover" />
+        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+          <img src={logo} alt="UTILITOP" className="w-[42px] h-[42px] rounded-xl object-contain mix-blend-lighten" />
           <div>
             <div className="font-black tracking-wide text-sm text-foreground">UTILITOP</div>
             <div className="text-xs text-muted-foreground">Déménagement & Transport</div>
           </div>
-        </div>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           <Link to="/packs" className="text-muted-foreground font-semibold text-sm px-2.5 py-2.5 rounded-xl hover:bg-foreground/[0.06] hover:text-foreground transition-colors">{t("nav.packs")}</Link>
