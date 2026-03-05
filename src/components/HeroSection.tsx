@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
-import { MapPin, ArrowRight, CalendarIcon, Camera, Phone, Mail, CheckCircle, MessageCircle, Loader2 } from "lucide-react";
+import { ArrowRight, CalendarIcon, Camera, Phone, Mail, CheckCircle, MessageCircle, Loader2 } from "lucide-react";
 import heroImage from "@/assets/hero-moving.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import AddressAutocomplete from "@/components/AddressAutocomplete";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -107,20 +108,18 @@ const HeroSection = () => {
 
           {/* Row 1: Departure + Destination */}
           <div className="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs text-muted-foreground mb-1.5">{t("hero.departure")}</label>
-              <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input className="glass-input pl-10" placeholder={t("hero.departure_placeholder")} value={departure} onChange={e => setDeparture(e.target.value)} />
-              </div>
-            </div>
-            <div>
-              <label className="block text-xs text-muted-foreground mb-1.5">{t("hero.destination")}</label>
-              <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input className="glass-input pl-10" placeholder={t("hero.destination_placeholder")} value={arrival} onChange={e => setArrival(e.target.value)} />
-              </div>
-            </div>
+            <AddressAutocomplete
+              label={t("hero.departure")}
+              placeholder={t("hero.departure_placeholder")}
+              value={departure}
+              onChange={setDeparture}
+            />
+            <AddressAutocomplete
+              label={t("hero.destination")}
+              placeholder={t("hero.destination_placeholder")}
+              value={arrival}
+              onChange={setArrival}
+            />
           </div>
 
           {/* Row 2: Property types */}
