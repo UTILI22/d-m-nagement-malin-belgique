@@ -81,26 +81,53 @@ const PackSelector = () => {
   const isInCart = (key: string) => cart.some((i) => i.key === key);
   const selectedPack = cart.find((i) => i.type === "pack");
 
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
+  const uploadPhotosToStorage = async (): Promise<string[]> => {
+    const urls: string[] = [];
+    const quoteId = crypto.randomUUID();
+    
+    for (const photo of photos) {
+      try {
+        const ext = photo.name.split(".").pop() || "jpg";
+        const path = `${quoteId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        
+        console.log("[Photo Upload] Uploading:", path, "size:", photo.size, "type:", photo.type);
+        
+        const { error: uploadError } = await supabase.storage
+          .from("quote-photos")
+          .upload(path, photo, { 
+            contentType: photo.type,
+            upsert: false 
+          });
+        
+        if (uploadError) {
+          console.error("[Photo Upload] Storage upload failed:", uploadError);
+          continue;
+        }
+        
+        const { data: urlData } = supabase.storage
+          .from("quote-photos")
+          .getPublicUrl(path);
+        
+        console.log("[Photo Upload] Success! Public URL:", urlData.publicUrl);
+        urls.push(urlData.publicUrl);
+      } catch (err) {
+        console.error("[Photo Upload] Unexpected error:", err);
+      }
+    }
+    
+    console.log("[Photo Upload] Total uploaded:", urls.length, "URLs:", urls);
+    return urls;
   };
 
   const handleSubmit = async () => {
     if (!departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()) return;
     setIsSubmitting(true);
     try {
-      // Convert photos to base64 for sending via edge function
-      const photosBase64: { data: string; name: string; type: string }[] = [];
-      for (const photo of photos) {
-        const base64 = await fileToBase64(photo);
-        photosBase64.push({ data: base64, name: photo.name, type: photo.type });
-      }
+      // Step 1: Upload photos directly to storage from client
+      const photoUrls = await uploadPhotosToStorage();
+      console.log("[Submit] Photo URLs to save:", photoUrls);
 
+      // Step 2: Submit quote with photo URLs
       const cartSummary = cart.map((i) => `${t(`${i.key}.name`)}${i.qty > 1 ? ` x${i.qty}` : ""}`).join(", ");
       const { error } = await supabase.functions.invoke("submit-quote", {
         body: {
@@ -113,14 +140,14 @@ const PackSelector = () => {
           email,
           phone,
           selected_pack: cartSummary || null,
-          photos_base64: photosBase64,
+          photo_urls: photoUrls,
         },
       });
       if (error) throw error;
       setShowQuoteForm(false);
       setShowSuccess(true);
     } catch (err) {
-      console.error("Submit error:", err);
+      console.error("[Submit] Error:", err);
     } finally {
       setIsSubmitting(false);
     }
