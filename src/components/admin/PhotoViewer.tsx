@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, Download, ExternalLink, X, ChevronLeft, ChevronRight, Image } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 interface PhotoViewerProps {
   photoUrls: string[];
