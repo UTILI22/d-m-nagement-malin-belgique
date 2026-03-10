@@ -252,6 +252,15 @@ const AdminDashboard = () => {
                             <p className="text-foreground font-medium">{q.photos_count || 0} photo(s)</p>
                           </div>
                         </div>
+                        {q.selected_pack && (
+                          <div className="flex items-start gap-2">
+                            <Package className="w-4 h-4 text-primary mt-0.5" />
+                            <div>
+                              <p className="text-xs text-muted-foreground">Pack sélectionné</p>
+                              <p className="text-foreground font-medium">{q.selected_pack}</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       <div className="space-y-2">
