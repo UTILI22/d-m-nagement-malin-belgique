@@ -23,6 +23,7 @@ export type Database = {
           id: string
           move_date: string | null
           phone: string | null
+          photo_urls: string[] | null
           photos_count: number | null
           property_from: string | null
           property_to: string | null
@@ -37,6 +38,7 @@ export type Database = {
           id?: string
           move_date?: string | null
           phone?: string | null
+          photo_urls?: string[] | null
           photos_count?: number | null
           property_from?: string | null
           property_to?: string | null
@@ -51,6 +53,7 @@ export type Database = {
           id?: string
           move_date?: string | null
           phone?: string | null
+          photo_urls?: string[] | null
           photos_count?: number | null
           property_from?: string | null
           property_to?: string | null
