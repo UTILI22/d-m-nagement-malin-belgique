@@ -282,6 +282,13 @@ const AdminDashboard = () => {
                             ))}
                           </select>
                         </div>
+
+                        <button
+                          onClick={() => handleDelete(q.id)}
+                          className="mt-3 flex items-center gap-1.5 text-xs text-destructive hover:text-destructive/80 transition-colors"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" /> Supprimer cette demande
+                        </button>
                       </div>
                     </div>
                   </div>
