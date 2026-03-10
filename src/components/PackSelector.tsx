@@ -85,6 +85,21 @@ const PackSelector = () => {
     if (!departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()) return;
     setIsSubmitting(true);
     try {
+      // Upload photos to storage
+      const photoUrls: string[] = [];
+      const quoteId = crypto.randomUUID();
+      for (const photo of photos) {
+        const ext = photo.name.split(".").pop() || "jpg";
+        const path = `${quoteId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("quote-photos")
+          .upload(path, photo, { contentType: photo.type });
+        if (!uploadError) {
+          const { data: urlData } = supabase.storage.from("quote-photos").getPublicUrl(path);
+          photoUrls.push(urlData.publicUrl);
+        }
+      }
+
       const cartSummary = cart.map((i) => `${t(`${i.key}.name`)}${i.qty > 1 ? ` x${i.qty}` : ""}`).join(", ");
       const { error } = await supabase.functions.invoke("submit-quote", {
         body: {
@@ -97,6 +112,7 @@ const PackSelector = () => {
           email,
           phone,
           selected_pack: cartSummary || null,
+          photo_urls: photoUrls,
         },
       });
       if (error) throw error;
