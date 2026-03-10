@@ -57,7 +57,7 @@ const Header = () => {
           </div>
 
           {/* Desktop only: Obtenir un devis */}
-          <Link to="/#devis" className="btn-primary text-xs hidden md:inline-flex">{t("nav.quote")}</Link>
+          <a href="/#devis" className="btn-primary text-xs hidden md:inline-flex">{t("nav.quote")}</a>
 
           {/* Mobile hamburger */}
           <button
