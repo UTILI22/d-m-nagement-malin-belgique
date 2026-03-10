@@ -115,8 +115,6 @@ const AdminLogin = () => {
           <button type="submit" disabled={loading} className="btn-primary text-sm w-full justify-center">
             {loading ? (
               <><Loader2 className="w-4 h-4 animate-spin" /> Chargement...</>
-            ) : setupMode ? (
-              <>Créer le compte admin</>
             ) : (
               <><LogIn className="w-4 h-4" /> Se connecter</>
             )}
