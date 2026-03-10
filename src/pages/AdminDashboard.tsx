@@ -15,6 +15,7 @@ type Quote = {
   phone: string | null;
   photos_count: number | null;
   status: string;
+  selected_pack: string | null;
 };
 
 const STATUS_OPTIONS = [
