@@ -208,6 +208,9 @@ const AdminDashboard = () => {
                     <p className="text-sm font-semibold text-foreground mt-1 truncate">
                       {q.departure} → {q.arrival}
                     </p>
+                    {q.selected_pack && (
+                      <p className="text-xs text-primary mt-0.5 flex items-center gap-1"><Package className="w-3 h-3" />{q.selected_pack}</p>
+                    )}
                   </div>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{formatDate(q.created_at)}</span>
