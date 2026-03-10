@@ -1,0 +1,1 @@
+ALTER TABLE public.quotes ADD COLUMN selected_pack text DEFAULT NULL;

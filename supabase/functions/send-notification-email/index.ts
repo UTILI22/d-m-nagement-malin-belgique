@@ -59,8 +59,12 @@ Deno.serve(async (req) => {
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: 600; color: #111827;">${quote.phone || "Non renseigné"}</td>
             </tr>
             <tr>
-              <td style="padding: 10px 0; color: #6b7280;">📸 Photos</td>
-              <td style="padding: 10px 0; font-weight: 600; color: #111827;">${quote.photos_count || 0} photo(s)</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #6b7280;">📸 Photos</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: 600; color: #111827;">${quote.photos_count || 0} photo(s)</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #6b7280;">📦 Pack</td>
+              <td style="padding: 10px 0; font-weight: 600; color: #111827;">${quote.selected_pack || "Aucun pack sélectionné"}</td>
             </tr>
           </table>
         </div>

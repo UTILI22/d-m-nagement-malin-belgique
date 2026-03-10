@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock, Trash2 } from "lucide-react";
+import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock, Trash2, Package } from "lucide-react";
 
 type Quote = {
   id: string;
@@ -15,6 +15,7 @@ type Quote = {
   phone: string | null;
   photos_count: number | null;
   status: string;
+  selected_pack: string | null;
 };
 
 const STATUS_OPTIONS = [
@@ -207,6 +208,9 @@ const AdminDashboard = () => {
                     <p className="text-sm font-semibold text-foreground mt-1 truncate">
                       {q.departure} → {q.arrival}
                     </p>
+                    {q.selected_pack && (
+                      <p className="text-xs text-primary mt-0.5 flex items-center gap-1"><Package className="w-3 h-3" />{q.selected_pack}</p>
+                    )}
                   </div>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{formatDate(q.created_at)}</span>
@@ -248,6 +252,15 @@ const AdminDashboard = () => {
                             <p className="text-foreground font-medium">{q.photos_count || 0} photo(s)</p>
                           </div>
                         </div>
+                        {q.selected_pack && (
+                          <div className="flex items-start gap-2">
+                            <Package className="w-4 h-4 text-primary mt-0.5" />
+                            <div>
+                              <p className="text-xs text-muted-foreground">Pack sélectionné</p>
+                              <p className="text-foreground font-medium">{q.selected_pack}</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       <div className="space-y-2">

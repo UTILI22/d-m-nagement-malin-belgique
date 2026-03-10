@@ -96,6 +96,7 @@ const PackSelector = () => {
           photos_count: photos.length,
           email,
           phone,
+          selected_pack: cartSummary || null,
         },
       });
       if (error) throw error;
