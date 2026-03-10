@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock, Trash2, Package, Download, Eye } from "lucide-react";
+import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Clock, Trash2, Package } from "lucide-react";
+import PhotoViewer from "@/components/admin/PhotoViewer";
 
 type Quote = {
   id: string;
@@ -246,30 +247,7 @@ const AdminDashboard = () => {
                             <p className="text-foreground font-medium">{q.move_date || "Non définie"}</p>
                           </div>
                         </div>
-                        <div className="flex items-start gap-2">
-                          <Image className="w-4 h-4 text-muted-foreground mt-0.5" />
-                          <div>
-                            <p className="text-xs text-muted-foreground">Photos</p>
-                            <p className="text-foreground font-medium">{q.photos_count || 0} photo(s)</p>
-                            {q.photo_urls && q.photo_urls.length > 0 && (
-                              <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-2">
-                                {q.photo_urls.map((url, i) => (
-                                  <div key={i} className="relative group rounded-lg overflow-hidden border border-white/10">
-                                    <img src={url} alt={`Photo ${i + 1}`} className="w-full h-24 object-cover" />
-                                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                                      <a href={url} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <Eye className="w-4 h-4 text-white" />
-                                      </a>
-                                      <a href={url} download className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <Download className="w-4 h-4 text-white" />
-                                      </a>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        </div>
+                        <PhotoViewer photoUrls={q.photo_urls || []} photosCount={q.photos_count || 0} />
                         {q.selected_pack && (
                           <div className="flex items-start gap-2">
                             <Package className="w-4 h-4 text-primary mt-0.5" />
