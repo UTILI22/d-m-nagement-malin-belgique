@@ -8,8 +8,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [setupMode, setSetupMode] = useState(false);
-  const [setupDone, setSetupDone] = useState(false);
+  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
