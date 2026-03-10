@@ -54,9 +54,29 @@ const HeroSection = () => {
   };
 
   const handleWhatsApp = () => {
-    const msg = encodeURIComponent(
-      `Bonjour, je souhaite un devis.\nDépart: ${departure} (${propertyFrom})\nDestination: ${arrival} (${propertyTo})\nDate: ${date || "Pas encore fixée"}\nEmail: ${email || "Non renseigné"}\nTéléphone: ${phone || "Non renseigné"}`
-    );
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("fr-BE", { day: "2-digit", month: "long", year: "numeric" });
+    const timeStr = now.toLocaleTimeString("fr-BE", { hour: "2-digit", minute: "2-digit" });
+    const propertyFromLabel = propertyOptions.find(o => o.value === propertyFrom)?.label || "";
+    const propertyToLabel = propertyOptions.find(o => o.value === propertyTo)?.label || "";
+
+    const lines = [
+      "📦 *Nouvelle demande de devis*",
+      "",
+      `📅 Date: ${dateStr}`,
+      `⏰ Heure: ${timeStr}`,
+      "",
+      `👤 Email: ${email || "Non renseigné"}`,
+      `📞 Téléphone: ${phone || "Non renseigné"}`,
+      "",
+      `🏠 *Départ:* ${departure}${propertyFromLabel ? ` (${propertyFromLabel})` : ""}`,
+      `📍 *Destination:* ${arrival}${propertyToLabel ? ` (${propertyToLabel})` : ""}`,
+      "",
+      `📅 Date souhaitée: ${date || "Pas encore fixée"}`,
+      photos.length > 0 ? `📸 Photos jointes: ${photos.length}` : "",
+    ].filter(Boolean);
+
+    const msg = encodeURIComponent(lines.join("\n"));
     window.open(`https://wa.me/32491507960?text=${msg}`, "_blank");
   };
 

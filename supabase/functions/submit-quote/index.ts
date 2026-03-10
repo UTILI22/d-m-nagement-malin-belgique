@@ -43,6 +43,23 @@ Deno.serve(async (req) => {
       throw error;
     }
 
+    // Send notification email (fire and forget)
+    try {
+      const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+      
+      await fetch(`${supabaseUrl}/functions/v1/send-notification-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${serviceKey}`,
+        },
+        body: JSON.stringify({ quote: data }),
+      });
+    } catch (emailErr) {
+      console.error("Email notification error (non-blocking):", emailErr);
+    }
+
     return new Response(JSON.stringify({ success: true, id: data.id }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
