@@ -9,7 +9,6 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +23,6 @@ const AdminLogin = () => {
 
       if (signInError) throw signInError;
 
-      // Check if user has admin role
       const { data: roles, error: roleError } = await supabase
         .from("user_roles")
         .select("role")
@@ -43,28 +41,6 @@ const AdminLogin = () => {
     }
   };
 
-  const handleSetup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      const { data, error } = await supabase.functions.invoke("setup-admin", {
-        body: { email, password },
-      });
-
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
-
-      setSetupDone(true);
-      setSetupMode(false);
-    } catch (err: any) {
-      setError(err.message || "Erreur lors de la configuration");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4" style={{
       background: "linear-gradient(135deg, hsl(160 55% 7%), hsl(160 60% 5%))"
@@ -74,12 +50,6 @@ const AdminLogin = () => {
           <ShieldCheck className="w-8 h-8 text-primary" />
           <h1 className="text-2xl font-bold text-foreground">Admin Utilitop</h1>
         </div>
-
-        {setupDone && (
-          <div className="mb-4 p-3 rounded-xl bg-accent/20 border border-accent/30 text-accent text-sm text-center">
-            ✅ Compte admin créé ! Vous pouvez maintenant vous connecter.
-          </div>
-        )}
 
         {error && (
           <div className="mb-4 p-3 rounded-xl bg-destructive/20 border border-destructive/30 text-destructive text-sm text-center">
@@ -120,9 +90,6 @@ const AdminLogin = () => {
             )}
           </button>
         </form>
-
-
-
       </div>
     </div>
   );
