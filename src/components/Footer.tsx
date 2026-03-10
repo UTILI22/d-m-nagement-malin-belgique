@@ -32,10 +32,9 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-foreground mb-3 text-sm">{t("footer.links")}</h4>
             <div className="space-y-2 text-sm">
-              <p><a href="#packs" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.packs")}</a></p>
-              <p><a href="#comment-ca-marche" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.how")}</a></p>
-              <p><a href="#avis" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.reviews")}</a></p>
-              <p><a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.faq")}</a></p>
+              <p><a href="/packs" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.packs")}</a></p>
+              <p><a href="/#comment-ca-marche" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.how")}</a></p>
+              <p><a href="/#faq" className="text-muted-foreground hover:text-foreground transition-colors">{t("nav.faq")}</a></p>
             </div>
           </div>
         </div>
