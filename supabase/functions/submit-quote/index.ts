@@ -13,7 +13,7 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { departure, arrival, property_from, property_to, move_date, photos_count, email, phone, selected_pack } = body;
+    const { departure, arrival, property_from, property_to, move_date, photos_count, email, phone, selected_pack, photo_urls } = body;
 
     if (!departure?.trim() || !arrival?.trim()) {
       return new Response(JSON.stringify({ error: "Departure and arrival are required" }), {
