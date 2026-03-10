@@ -91,12 +91,15 @@ const PackSelector = () => {
       for (const photo of photos) {
         const ext = photo.name.split(".").pop() || "jpg";
         const path = `${quoteId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-        const { error: uploadError } = await supabase.storage
+        const { error: uploadError, data: uploadData } = await supabase.storage
           .from("quote-photos")
-          .upload(path, photo, { contentType: photo.type });
-        if (!uploadError) {
+          .upload(path, photo, { contentType: photo.type, upsert: true });
+        if (uploadError) {
+          console.error("Photo upload error:", uploadError);
+        } else {
           const { data: urlData } = supabase.storage.from("quote-photos").getPublicUrl(path);
           photoUrls.push(urlData.publicUrl);
+          console.log("Photo uploaded:", urlData.publicUrl);
         }
       }
 
