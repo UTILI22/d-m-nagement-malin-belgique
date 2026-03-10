@@ -43,7 +43,7 @@ const AdminDashboard = () => {
     const { data, error } = await supabase
       .from("quotes")
       .select("*")
-      .order(sortField, { ascending: sortAsc });
+      .order(sortField, { ascending: sortAsc }) as { data: Quote[] | null; error: any };
 
     if (error) {
       console.error("Fetch error:", error);
