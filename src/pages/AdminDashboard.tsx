@@ -73,6 +73,15 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Êtes-vous sûr de vouloir supprimer cette demande ?")) return;
+    const { error } = await supabase.from("quotes").delete().eq("id", id);
+    if (!error) {
+      setQuotes((prev) => prev.filter((q) => q.id !== id));
+      setExpandedId(null);
+    }
+  };
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/admin");
