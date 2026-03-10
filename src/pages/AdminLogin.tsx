@@ -121,14 +121,8 @@ const AdminLogin = () => {
           </button>
         </form>
 
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => { setSetupMode(!setupMode); setError(""); }}
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {setupMode ? "← Retour à la connexion" : "Première connexion ? Créer le compte admin"}
-          </button>
-        </div>
+
+
       </div>
     </div>
   );
