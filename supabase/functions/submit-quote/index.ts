@@ -6,18 +6,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-function base64ToUint8Array(base64DataUrl: string): { bytes: Uint8Array; contentType: string } {
-  // data:image/jpeg;base64,/9j/4AAQ...
-  const [header, b64] = base64DataUrl.split(",");
-  const contentType = header?.match(/data:(.*?);/)?.[1] || "image/jpeg";
-  const binaryStr = atob(b64);
-  const bytes = new Uint8Array(binaryStr.length);
-  for (let i = 0; i < binaryStr.length; i++) {
-    bytes[i] = binaryStr.charCodeAt(i);
-  }
-  return { bytes, contentType };
-}
-
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -25,7 +13,13 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { departure, arrival, property_from, property_to, move_date, photos_count, email, phone, selected_pack, photos_base64 } = body;
+    const { departure, arrival, property_from, property_to, move_date, photos_count, email, phone, selected_pack, photo_urls } = body;
+
+    console.log("[submit-quote] Received request:", {
+      departure, arrival, photos_count,
+      photo_urls_count: Array.isArray(photo_urls) ? photo_urls.length : 0,
+      photo_urls: photo_urls,
+    });
 
     if (!departure?.trim() || !arrival?.trim()) {
       return new Response(JSON.stringify({ error: "Departure and arrival are required" }), {
@@ -39,33 +33,9 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    // Upload photos to storage using service role key
-    const photoUrls: string[] = [];
-    const quoteId = crypto.randomUUID();
-
-    if (Array.isArray(photos_base64)) {
-      for (const photo of photos_base64) {
-        try {
-          const { bytes, contentType } = base64ToUint8Array(photo.data);
-          const ext = photo.name?.split(".").pop() || "jpg";
-          const path = `${quoteId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-
-          const { error: uploadError } = await supabase.storage
-            .from("quote-photos")
-            .upload(path, bytes, { contentType, upsert: true });
-
-          if (uploadError) {
-            console.error("Photo upload error:", uploadError);
-          } else {
-            const { data: urlData } = supabase.storage.from("quote-photos").getPublicUrl(path);
-            photoUrls.push(urlData.publicUrl);
-            console.log("Photo uploaded:", urlData.publicUrl);
-          }
-        } catch (photoErr) {
-          console.error("Photo processing error:", photoErr);
-        }
-      }
-    }
+    // photo_urls are now sent directly from the client after upload
+    const finalPhotoUrls = Array.isArray(photo_urls) ? photo_urls : [];
+    console.log("[submit-quote] Saving photo_urls to DB:", finalPhotoUrls);
 
     const { data, error } = await supabase.from("quotes").insert({
       departure: departure.trim().substring(0, 200),
@@ -77,13 +47,18 @@ Deno.serve(async (req) => {
       email: email?.trim().substring(0, 255) || null,
       phone: phone?.trim().substring(0, 30) || null,
       selected_pack: selected_pack?.substring(0, 500) || null,
-      photo_urls: photoUrls,
+      photo_urls: finalPhotoUrls,
     }).select().single();
 
     if (error) {
-      console.error("DB insert error:", error);
+      console.error("[submit-quote] DB insert error:", error);
       throw error;
     }
+
+    console.log("[submit-quote] Quote saved successfully:", {
+      id: data.id,
+      photo_urls_saved: data.photo_urls,
+    });
 
     // Send notification email (fire and forget)
     try {
@@ -99,14 +74,14 @@ Deno.serve(async (req) => {
         body: JSON.stringify({ quote: data }),
       });
     } catch (emailErr) {
-      console.error("Email notification error (non-blocking):", emailErr);
+      console.error("[submit-quote] Email notification error (non-blocking):", emailErr);
     }
 
     return new Response(JSON.stringify({ success: true, id: data.id }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
-    console.error("Error:", err);
+    console.error("[submit-quote] Error:", err);
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
