@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock, Trash2, Package, Download, Eye } from "lucide-react";
+import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Clock, Trash2, Package } from "lucide-react";
+import PhotoViewer from "@/components/admin/PhotoViewer";
 
 type Quote = {
   id: string;
