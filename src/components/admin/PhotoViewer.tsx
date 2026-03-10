@@ -116,7 +116,8 @@ const PhotoViewer = ({ photoUrls, photosCount }: PhotoViewerProps) => {
 
       {/* Lightbox Modal */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 border-white/10 bg-black/95 backdrop-blur-xl overflow-hidden">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 border-white/10 bg-black/95 backdrop-blur-xl overflow-hidden" aria-describedby={undefined}>
+          <VisuallyHidden.Root><DialogTitle>Aperçu photo</DialogTitle></VisuallyHidden.Root>
           <div className="relative flex flex-col items-center">
             {/* Close */}
             <button
