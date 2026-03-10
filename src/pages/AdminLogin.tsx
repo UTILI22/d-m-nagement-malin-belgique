@@ -87,7 +87,7 @@ const AdminLogin = () => {
           </div>
         )}
 
-        <form onSubmit={setupMode ? handleSetup : handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-xs text-muted-foreground mb-1.5">Email</label>
             <input
