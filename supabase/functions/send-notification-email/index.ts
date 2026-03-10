@@ -62,6 +62,20 @@ Deno.serve(async (req) => {
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #6b7280;">📸 Photos</td>
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: 600; color: #111827;">${quote.photos_count || 0} photo(s)</td>
             </tr>
+            ${(quote.photo_urls && quote.photo_urls.length > 0) ? `
+            <tr>
+              <td colspan="2" style="padding: 16px 0;">
+                <p style="color: #6b7280; margin: 0 0 8px; font-size: 14px;">📷 Photos jointes :</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  ${quote.photo_urls.map((url: string, i: number) => `
+                    <a href="${url}" target="_blank" style="display: inline-block;">
+                      <img src="${url}" alt="Photo ${i + 1}" style="width: 120px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid #e5e7eb;" />
+                    </a>
+                  `).join('')}
+                </div>
+              </td>
+            </tr>
+            ` : ''}
             <tr>
               <td style="padding: 10px 0; color: #6b7280;">📦 Pack</td>
               <td style="padding: 10px 0; font-weight: 600; color: #111827;">${quote.selected_pack || "Aucun pack sélectionné"}</td>
