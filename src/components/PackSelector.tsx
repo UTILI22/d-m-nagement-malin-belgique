@@ -81,26 +81,24 @@ const PackSelector = () => {
   const isInCart = (key: string) => cart.some((i) => i.key === key);
   const selectedPack = cart.find((i) => i.type === "pack");
 
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleSubmit = async () => {
     if (!departure.trim() || !arrival.trim() || !email.trim() || !phone.trim()) return;
     setIsSubmitting(true);
     try {
-      // Upload photos to storage
-      const photoUrls: string[] = [];
-      const quoteId = crypto.randomUUID();
+      // Convert photos to base64 for sending via edge function
+      const photosBase64: { data: string; name: string; type: string }[] = [];
       for (const photo of photos) {
-        const ext = photo.name.split(".").pop() || "jpg";
-        const path = `${quoteId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-        const { error: uploadError, data: uploadData } = await supabase.storage
-          .from("quote-photos")
-          .upload(path, photo, { contentType: photo.type, upsert: true });
-        if (uploadError) {
-          console.error("Photo upload error:", uploadError);
-        } else {
-          const { data: urlData } = supabase.storage.from("quote-photos").getPublicUrl(path);
-          photoUrls.push(urlData.publicUrl);
-          console.log("Photo uploaded:", urlData.publicUrl);
-        }
+        const base64 = await fileToBase64(photo);
+        photosBase64.push({ data: base64, name: photo.name, type: photo.type });
       }
 
       const cartSummary = cart.map((i) => `${t(`${i.key}.name`)}${i.qty > 1 ? ` x${i.qty}` : ""}`).join(", ");
@@ -115,7 +113,7 @@ const PackSelector = () => {
           email,
           phone,
           selected_pack: cartSummary || null,
-          photo_urls: photoUrls,
+          photos_base64: photosBase64,
         },
       });
       if (error) throw error;
