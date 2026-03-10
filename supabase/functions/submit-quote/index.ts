@@ -36,6 +36,7 @@ Deno.serve(async (req) => {
       photos_count: photos_count || 0,
       email: email?.trim().substring(0, 255) || null,
       phone: phone?.trim().substring(0, 30) || null,
+      selected_pack: selected_pack?.substring(0, 500) || null,
     }).select().single();
 
     if (error) {
