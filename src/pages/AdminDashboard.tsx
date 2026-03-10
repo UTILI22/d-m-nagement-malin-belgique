@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock } from "lucide-react";
+import { LogOut, Search, Filter, RefreshCw, ChevronDown, ChevronUp, Phone, Mail, MapPin, Calendar, Image, Clock, Trash2 } from "lucide-react";
 
 type Quote = {
   id: string;
@@ -70,6 +70,15 @@ const AdminDashboard = () => {
 
     if (!error) {
       setQuotes((prev) => prev.map((q) => (q.id === id ? { ...q, status: newStatus } : q)));
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Êtes-vous sûr de vouloir supprimer cette demande ?")) return;
+    const { error } = await supabase.from("quotes").delete().eq("id", id);
+    if (!error) {
+      setQuotes((prev) => prev.filter((q) => q.id !== id));
+      setExpandedId(null);
     }
   };
 
@@ -273,6 +282,13 @@ const AdminDashboard = () => {
                             ))}
                           </select>
                         </div>
+
+                        <button
+                          onClick={() => handleDelete(q.id)}
+                          className="mt-3 flex items-center gap-1.5 text-xs text-destructive hover:text-destructive/80 transition-colors"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" /> Supprimer cette demande
+                        </button>
                       </div>
                     </div>
                   </div>
