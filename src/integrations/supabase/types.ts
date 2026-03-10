@@ -26,6 +26,7 @@ export type Database = {
           photos_count: number | null
           property_from: string | null
           property_to: string | null
+          selected_pack: string | null
           status: string
         }
         Insert: {
@@ -39,6 +40,7 @@ export type Database = {
           photos_count?: number | null
           property_from?: string | null
           property_to?: string | null
+          selected_pack?: string | null
           status?: string
         }
         Update: {
@@ -52,6 +54,7 @@ export type Database = {
           photos_count?: number | null
           property_from?: string | null
           property_to?: string | null
+          selected_pack?: string | null
           status?: string
         }
         Relationships: []
