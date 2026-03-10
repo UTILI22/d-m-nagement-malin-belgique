@@ -16,6 +16,7 @@ type Quote = {
   photos_count: number | null;
   status: string;
   selected_pack: string | null;
+  photo_urls: string[] | null;
 };
 
 const STATUS_OPTIONS = [
