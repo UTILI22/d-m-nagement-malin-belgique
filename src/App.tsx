@@ -27,7 +27,7 @@ const App = () => (
           <Route path="/a-propos" element={<About />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}.
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
